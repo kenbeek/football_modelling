@@ -1,12 +1,13 @@
 import json
 import pandas as pd
 import numpy as np
+from dotenv import load_dotenv
 
 
 def load_wyscout_match_data(country="England"):
 
     with open(
-        f"/Users/thomas/Documents/data/football/wyscout_data/events_{country}.json"
+        f"/Users/thomas/Documents/data/football/wyscout/events_{country}.json"
     ) as f:
         data = json.load(f)
         train = pd.DataFrame(data)
