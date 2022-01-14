@@ -7,7 +7,7 @@ from pathlib import Path
 
 
 def load_wyscout_match_data(country="England", raw=False):
-    load_dotenv(find_dotenv())
+    load_dotenv(find_dotenv(), override=True)
     data_root_dir = Path(os.path.expanduser(os.getenv("DATA_ROOT_DIR")))
     wyscout_subdir = os.getenv("WYSCOUT_DIR")
     wyscout_dir = wyscout_dir = data_root_dir.joinpath(wyscout_subdir)
