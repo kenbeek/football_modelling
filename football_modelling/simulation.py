@@ -4,6 +4,17 @@ from scipy.stats import poisson
 
 
 def simulate_match(foot_model, homeTeam, awayTeam, max_goals=10):
+    """Simulate a football match using the poisson distribution
+
+    Args:
+        foot_model ([type]): A model to determine the expected number of goals
+        homeTeam (str):
+        awayTeam ([type]): [description]
+        max_goals (int, optional): [description]. Defaults to 10.
+
+    Returns:
+        [type]: [description]
+    """
 
     home_goals_avg = foot_model.predict(
         pd.DataFrame(

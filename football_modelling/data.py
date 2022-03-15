@@ -6,7 +6,7 @@ import os
 from pathlib import Path
 
 
-##### STATSBOMB #####
+
 
 
 def load_statsbomb_dir():
@@ -24,6 +24,7 @@ def load_wyscout_dir():
     wyscout_dir = wyscout_dir = data_root_dir.joinpath(wyscout_subdir)
     return wyscout_dir
 
+##### STATSBOMB #####
 
 def load_statsbomb_competitions():
     statsbomb_dir = load_statsbomb_dir()
@@ -35,7 +36,34 @@ def load_statsbomb_competitions():
     return competitions
 
 
+
+
+def load_statsbomb_events():
+    raise NotImplementedError
+
+def load_statsbomb_lineups():
+    raise NotImplementedError
+
+def load_statsbomb_matches():
+    raise NotImplementedError
+
+def load_statsbomb_360():
+    raise NotImplementedError
+
+
 ##### WYSCOUT #####
+
+
+
+def load_wyscout_competitions():
+    wyscout_dir = load_wyscout_dir
+    competitions_file = wyscout_dir.joinpath('competitions.json')
+
+    with open(competitions_file, 'rb') as f:
+        competitions = json.load(f)
+    return competitions
+
+
 
 
 def load_wyscout_match_data(country="England", raw=False):
@@ -58,6 +86,11 @@ def load_wyscout_match_data(country="England", raw=False):
         return train
     else:
         return preprocess_match_data(train)
+
+
+
+
+
 
 
 def preprocess_match_data(train):
