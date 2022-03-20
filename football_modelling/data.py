@@ -6,14 +6,11 @@ import os
 from pathlib import Path
 
 
-
-
-
 def load_statsbomb_dir():
     load_dotenv(find_dotenv(), override=True)
     data_root_dir = Path(os.path.expanduser(os.getenv("DATA_ROOT_DIR")))
     statsbomb_subdir = os.getenv("STATSBOMB_DIR")
-    statsbomb_dir = statsbomb_subdir = data_root_dir.joinpath(statsbomb_subdir)
+    statsbomb_dir = data_root_dir.joinpath(statsbomb_subdir)
     return statsbomb_dir
 
 
@@ -21,10 +18,20 @@ def load_wyscout_dir():
     load_dotenv(find_dotenv(), override=True)
     data_root_dir = Path(os.path.expanduser(os.getenv("DATA_ROOT_DIR")))
     wyscout_subdir = os.getenv("WYSCOUT_DIR")
-    wyscout_dir = wyscout_dir = data_root_dir.joinpath(wyscout_subdir)
+    wyscout_dir = data_root_dir.joinpath(wyscout_subdir)
     return wyscout_dir
 
+
+def load_metrica_dir():
+    load_dotenv(find_dotenv(), override=True)
+    data_root_dir = Path(os.path.expanduser(os.getenv("DATA_ROOT_DIR")))
+    metrica_subdir = os.getenv("METRICA_DIR")
+    metrica_dir = data_root_dir.joinpath(metrica_subdir)
+    return metrica_dir
+
+
 ##### STATSBOMB #####
+
 
 def load_statsbomb_competitions():
     statsbomb_dir = load_statsbomb_dir()
@@ -36,16 +43,17 @@ def load_statsbomb_competitions():
     return competitions
 
 
-
-
 def load_statsbomb_events():
     raise NotImplementedError
+
 
 def load_statsbomb_lineups():
     raise NotImplementedError
 
+
 def load_statsbomb_matches():
     raise NotImplementedError
+
 
 def load_statsbomb_360():
     raise NotImplementedError
@@ -54,16 +62,13 @@ def load_statsbomb_360():
 ##### WYSCOUT #####
 
 
-
 def load_wyscout_competitions():
     wyscout_dir = load_wyscout_dir
-    competitions_file = wyscout_dir.joinpath('competitions.json')
+    competitions_file = wyscout_dir.joinpath("competitions.json")
 
-    with open(competitions_file, 'rb') as f:
+    with open(competitions_file, "rb") as f:
         competitions = json.load(f)
     return competitions
-
-
 
 
 def load_wyscout_match_data(country="England", raw=False):
@@ -86,11 +91,6 @@ def load_wyscout_match_data(country="England", raw=False):
         return train
     else:
         return preprocess_match_data(train)
-
-
-
-
-
 
 
 def preprocess_match_data(train):
