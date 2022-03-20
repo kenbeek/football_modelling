@@ -195,7 +195,8 @@ class player(object):
         return self.time_to_intercept
 
     def probability_intercept_ball(self, T):
-        # probability of a player arriving at target location at time 'T' given their expected time_to_intercept (time of arrival), as described in Spearman 2018
+        # probability of a player arriving at target location at time 'T'
+        # given their expected time_to_intercept (time of arrival), as described in Spearman 2018
         f = 1 / (
             1.0
             + np.exp(
@@ -216,7 +217,8 @@ def default_model_params(time_to_control_veto=3):
 
     Parameters
     -----------
-    time_to_control_veto: If the probability that another team or player can get to the ball and control it is less than 10^-time_to_control_veto, ignore that player.
+    time_to_control_veto: If the probability that another team or player can get to the
+    ball and control it is less than 10^-time_to_control_veto, ignore that player.
 
 
     Returns
